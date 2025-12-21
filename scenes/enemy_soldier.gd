@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+const SPEED = 80.0
 const JUMP_VELOCITY = -850.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var direction = 1 
+signal player_damaged 
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -39,5 +41,12 @@ func _process(delta: float) -> void:
 	position.x += direction * SPEED* delta
 
 func _on_timer_timeout() -> void:
+	animated_sprite_2d.animation = "idle"
+
 	direction *= -1
 	
+
+
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body.name=="player":
+		emit_signal("player_damaged", body)

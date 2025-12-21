@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-
 const SPEED = 400.0
 const JUMP_VELOCITY = -850.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var Health = 3;
 
 
 func _physics_process(delta: float) -> void:
@@ -39,3 +39,5 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h=true
 	else :
 		animated_sprite_2d.flip_h=false
+func damage()-> void:
+			animated_sprite_2d.animation = "damaged"

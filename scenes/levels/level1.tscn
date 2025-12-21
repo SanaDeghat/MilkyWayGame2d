@@ -1151,6 +1151,10 @@ tile_set = SubResource("TileSet_dd0lh")
 position = Vector2(233, 333)
 scale = Vector2(0.75, 0.75)
 
-[node name="enemySoldier" parent="." instance=ExtResource("3_dd0lh")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="enemySoldier" parent="Enemies" instance=ExtResource("3_dd0lh")]
 position = Vector2(680, 469)
 scale = Vector2(0.76, 0.76)
+
+[node name="enemySoldier2" parent="Enemies" instance=ExtResource("3_dd0lh")]
