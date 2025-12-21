@@ -259,7 +259,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2a3c5")
 }],
 "loop": true,
-"name": &"dying",
+"name": &"death",
 "speed": 7.0
 }, {
 "frames": [{
@@ -407,10 +407,11 @@ texture_filter = 1
 position = Vector2(0, -3.8146973e-06)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_holxr")
-animation = &"dying"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.8371574
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 2)
 shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]

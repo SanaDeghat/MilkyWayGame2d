@@ -16,4 +16,4 @@ func level_setup () -> void:
 			enemy.player_damaged.connect(_on_player_damaged)
 			
 func _on_player_damaged(body):
-	print("player damaged")
+	body.damage()    

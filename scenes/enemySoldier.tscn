@@ -257,18 +257,19 @@ animations = [{
 size = Vector2(54, 92.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncc1l"]
-size = Vector2(55, 92)
+size = Vector2(54, 92)
 
 [node name="enemySoldier" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_jcf0a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
+position = Vector2(-0.9999962, 0)
+scale = Vector2(2.9583335, 3)
 sprite_frames = SubResource("SpriteFrames_0snxj")
 animation = &"damaged"
 autoplay = "idle"
-frame_progress = 0.77221763
+frame_progress = 0.4244935
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 4.25)
@@ -281,7 +282,7 @@ autostart = true
 [node name="hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(-2.5, 4)
+position = Vector2(-3, 4)
 shape = SubResource("RectangleShape2D_ncc1l")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
