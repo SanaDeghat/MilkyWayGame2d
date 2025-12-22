@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqw7661bse5qt"]
+
+[ext_resource type="Texture2D" uid="uid://co6pgnechg33v" path="res://assets/Images/Collectbles/apple.png" id="1_3ed3y"]
+[ext_resource type="Script" uid="uid://bcol6x6ddwua" path="res://Script/apple.gd" id="1_n78qv"]
+[ext_resource type="AudioStream" uid="uid://kfagqvbxcl8w" path="res://assets/SoundEffects/player/item-pick-up-38258.mp3" id="3_whgpf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n78qv"]
+atlas = ExtResource("1_3ed3y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whgpf"]
+atlas = ExtResource("1_3ed3y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xniv1"]
+atlas = ExtResource("1_3ed3y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq6lu"]
+atlas = ExtResource("1_3ed3y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lpjo0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n78qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whgpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xniv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq6lu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bg8at"]
+radius = 21.260292
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_n78qv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_lpjo0")
+autoplay = "default"
+frame_progress = 0.2662317
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bg8at")
+
+[node name="collected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_whgpf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="collected" to="." method="_on_collected_finished"]

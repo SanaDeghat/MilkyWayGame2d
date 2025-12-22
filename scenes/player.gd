@@ -43,12 +43,17 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h=false
 	
 func damage()-> void:
-			animated_sprite_2d.animation = "damaged"
-			health -= 1
-			print(health)
-			if health <= 0:
+			if health > 0:
+				animated_sprite_2d.animation = "damaged"
+				health -= 1
+				print(health)
+			if health ==0:
+				
 				death()
+			
+			
 			
 func death()-> void:
 	death_soundeffect.play()
+	health =-1;
 	animated_sprite_2d.animation = "death"

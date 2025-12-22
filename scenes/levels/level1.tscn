@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=7 format=4 uid="uid://cgvpe6tifilw0"]
 
 [ext_resource type="Texture2D" uid="uid://d1gy1ykbk7oyj" path="res://assets/Images/Tilemap/Floor Tiles2.png" id="1_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfxgj"]
 texture = ExtResource("1_4tcl0")
@@ -1148,13 +1149,21 @@ tile_map_data = PackedByteArray("AAAAAAkAAQACAAoAAAAAAAoAAQAGAAEAAAAAAAsAAQAGAAI
 tile_set = SubResource("TileSet_dd0lh")
 
 [node name="player" parent="." instance=ExtResource("2_4tcl0")]
-position = Vector2(233, 333)
+position = Vector2(112.000015, 339)
 scale = Vector2(0.75, 0.75)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="enemySoldier" parent="Enemies" instance=ExtResource("3_dd0lh")]
-position = Vector2(680, 469)
-scale = Vector2(0.76, 0.76)
+position = Vector2(445, 590)
 
 [node name="enemySoldier2" parent="Enemies" instance=ExtResource("3_dd0lh")]
+position = Vector2(861, 143)
+
+[node name="apples" type="Node2D" parent="."]
+
+[node name="apple1" parent="apples" instance=ExtResource("4_bfxgj")]
+position = Vector2(520, 615)
+
+[node name="apple2" parent="apples" instance=ExtResource("4_bfxgj")]
+position = Vector2(567, 271)

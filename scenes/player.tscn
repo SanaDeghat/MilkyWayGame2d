@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b8v7vcmu0gnhr"]
+[gd_scene load_steps=61 format=3 uid="uid://b8v7vcmu0gnhr"]
 
 [ext_resource type="Texture2D" uid="uid://b1pahea5jvrai" path="res://assets/Images/Player/Player Hurt 48x48.png" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bkr3668nsdxdb" path="res://scenes/player.gd" id="1_tuyoq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc44lmcbcy5ho" path="res://assets/Images/Player/Player Death 64x64.png" id="3_smehm"]
 [ext_resource type="Texture2D" uid="uid://bimnnqxnsh1b2" path="res://assets/Images/Player/player run 48x48.png" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://dq055125ueq0e" path="res://assets/Images/Player/PlayerWalk 48x48.png" id="5_ur7pv"]
+[ext_resource type="AudioStream" uid="uid://sm430r11rsgc" path="res://assets/SoundEffects/player/hades-death-sound.mp3" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
 atlas = ExtResource("1_qlg0r")
@@ -397,7 +398,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(51, 87)
+size = Vector2(52.5, 87)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_tuyoq")
@@ -411,7 +412,8 @@ animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 2)
+position = Vector2(-25.25, 5)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_smehm")
