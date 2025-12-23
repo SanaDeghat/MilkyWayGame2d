@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
+
 const SPEED = 400.0
 const JUMP_VELOCITY = -850.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var health = 1;
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
 
-
+	
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		return

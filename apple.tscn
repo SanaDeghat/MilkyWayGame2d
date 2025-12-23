@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://co6pgnechg33v" path="res://assets/Images/Collectbles/apple.png" id="1_3ed3y"]
 [ext_resource type="Script" uid="uid://bcol6x6ddwua" path="res://Script/apple.gd" id="1_n78qv"]
-[ext_resource type="AudioStream" uid="uid://kfagqvbxcl8w" path="res://assets/SoundEffects/player/item-pick-up-38258.mp3" id="3_whgpf"]
+[ext_resource type="AudioStream" uid="uid://ceetxi8nnth76" path="res://assets/SoundEffects/player/collect_apple.wav" id="3_whgpf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n78qv"]
 atlas = ExtResource("1_3ed3y")
@@ -51,7 +51,7 @@ texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_lpjo0")
 autoplay = "default"
-frame_progress = 0.2662317
+frame_progress = 0.816579
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bg8at")
