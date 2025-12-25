@@ -398,22 +398,30 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(57, 87)
+size = Vector2(53, 87)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_tuyoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -3.8146973e-06)
+position = Vector2(-3, -10)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_holxr")
 animation = &"death"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-26.5, 5)
+[node name="Idle_Copllision" type="CollisionShape2D" parent="."]
+position = Vector2(-29.5, -4.5)
 shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_smehm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(-1.37, -1.37)
+drag_vertical_enabled = true
+drag_vertical_offset = -1.0
+drag_top_margin = 1.0
+drag_right_margin = 1.0
+drag_bottom_margin = 0.81
