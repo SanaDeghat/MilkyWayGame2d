@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MilkyWayGame"
-run/main_scene="uid://mjoc7rtbc5xq"
+run/main_scene="uid://bm5qwma4xuo3b"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
