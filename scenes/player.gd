@@ -1,60 +1,120 @@
 extends CharacterBody2D
 
+const SPEED := 400.0
+const JUMP_VELOCITY := -850.0
+const CLIMB_SPEED := 200.0
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -850.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-var health = 1;
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
 
-	
+var health := 1
+var on_ladder := false
+var climbing := false
+
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		return
-	#adding animation 
-	#if not is_on_floor():
-	#	animated_sprite_2d.animation = "jumping"
-	if velocity.x>1 or  velocity.x < -1 :
-		animated_sprite_2d.animation = "running"
-	else:
-		animated_sprite_2d.animation = "idle"
 
-	# Add the gravity.hihihihi
-	if not is_on_floor():
-		animated_sprite_2d.animation = "jumping"
+	var direction := Input.get_axis("left", "right")
+	var vertical_dir := Input.get_axis("up", "down")
+	var grounded := is_on_floor()
+
+	# =========================
+	# LADDER LOGIC
+	# =========================
+	if on_ladder:
+		if vertical_dir != 0:
+			velocity.y = vertical_dir * CLIMB_SPEED
+			climbing = true
+		else:
+			velocity.y = 0
+			if grounded:
+				climbing = false
+	else:
+		climbing = false
+
+	# =========================
+	# GRAVITY
+	# =========================
+	if not grounded and not climbing:
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	# =========================
+	# JUMP
+	# =========================
+	if Input.is_action_just_pressed("up") and grounded and not climbing:
+		print ("jumping")
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/de celeration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction:
+	# =========================
+	# HORIZONTAL MOVEMENT
+	# =========================
+	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	if direction == -1.0:
-		animated_sprite_2d.flip_h=true
-	else :
-		animated_sprite_2d.flip_h=false
-	
-func damage()-> void:
-			if health > 0:
-				animated_sprite_2d.animation = "damaged"
-				health -= 1
-				print(health)
-			if health ==0:
-				
-				death()
-			
-			
-			
-func death()-> void:
+
+	# =========================
+	# SPRITE FLIP
+	# =========================
+	if direction != 0:
+		animated_sprite_2d.flip_h = direction < 0
+
+	# =========================
+	# ANIMATIONS
+	# =========================
+	if health <= 0:
+		animated_sprite_2d.play("death")
+	elif climbing:
+		if vertical_dir != 0:
+			animated_sprite_2d.play("climbing")
+		else:
+			animated_sprite_2d.pause()
+	elif not grounded:
+		animated_sprite_2d.play("jumping")
+	elif abs(velocity.x) > 1:
+		animated_sprite_2d.play("running")
+	else:
+		animated_sprite_2d.play("idle")
+
+# =========================
+# DAMAGE / DEATH
+# =========================
+func damage() -> void:
+	if health <= 0:
+		return
+
+	health -= 1
+	animated_sprite_2d.play("damaged")
+	print(health)
+
+	if health == 0:
+		death()
+
+func death() -> void:
 	death_soundeffect.play()
-	health =-1;
-	animated_sprite_2d.animation = "death"
+	animated_sprite_2d.play("death")
+	health = -1
+
+# =========================
+# LADDER AREA
+# =========================
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	on_ladder = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	on_ladder = false
+	climbing = false
+
+# =========================
+# ANIMATION CALLBACK
+# =========================
+func _on_animated_sprite_2d_animation_looped() -> void:
+	if health <= 0:
+		# FORCE last frame of death animation
+		var frames := animated_sprite_2d.sprite_frames
+		var anim := animated_sprite_2d.animation
+		animated_sprite_2d.frame = frames.get_frame_count(anim) - 1
+		animated_sprite_2d.pause()

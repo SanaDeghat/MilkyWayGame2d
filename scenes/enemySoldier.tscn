@@ -254,7 +254,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt6ud"]
-size = Vector2(54, 90)
+size = Vector2(53.94737, 88.1579)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncc1l"]
 size = Vector2(62, 95)
@@ -268,23 +268,22 @@ script = ExtResource("1_jcf0a")
 position = Vector2(-0.9999962, 0)
 scale = Vector2(2.9583335, 3)
 sprite_frames = SubResource("SpriteFrames_0snxj")
-animation = &"damaged"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.4244935
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3, 3)
+position = Vector2(-4.605263, 3.2894723)
 shape = SubResource("RectangleShape2D_dt6ud")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="Collision" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(-4, 0.5)
+[node name="hitbox" type="CollisionShape2D" parent="Collision"]
+position = Vector2(-5.263153, 1.3157895)
 shape = SubResource("RectangleShape2D_ncc1l")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_exited" from="Collision" to="." method="_on_hitbox_body_exited"]
