@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb3dsqi6gxlji"]
+
+[ext_resource type="Script" uid="uid://csc17esfkri5e" path="res://diolog_ai.gd" id="1_1von5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1von5"]
+bg_color = Color(0, 0, 0, 0.8039216)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lhc4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="diolog_ai" type="CanvasLayer"]
+script = ExtResource("1_1von5")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(1000, 180)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -497.0
+offset_top = -263.0
+offset_right = 503.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1von5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = -34.0
+offset_right = 956.0
+offset_bottom = 180.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 11
+
+[node name="NameLable" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "NPC Name"
+
+[node name="title lable" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.64110816, 0.64110816, 0.64110816, 1)
+theme_override_font_sizes/font_size = 24
+text = "commander"
+
+[node name="dialougeLable" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "lorem ipsum abra kadabra test test test test test test test teste te tet bing boing  (doing going test etst test etst etst test test etst )(i hsould fix the font note to self )"
+autowrap_mode = 3
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81700003
+anchor_top = 0.717
+anchor_right = 0.98800004
+anchor_bottom = 1.0780001
+offset_left = -8.000061
+offset_top = 1.9400024
+offset_right = 31.999939
+offset_bottom = 1.9599915
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lhc4")
+
+[node name="Continue Lable" type="Label" parent="Panel/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 208.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 29
+text = "continue"
+horizontal_alignment = 1
+vertical_alignment = 1
