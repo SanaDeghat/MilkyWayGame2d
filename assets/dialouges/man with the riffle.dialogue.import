@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c2so27i1be0qg"
+path="res://.godot/imported/man with the riffle.dialogue-f5475f02589e270066bad59ff3e38760.tres"
+
+[deps]
+
+source_file="res://assets/dialouges/man with the riffle.dialogue"
+dest_files=["res://.godot/imported/man with the riffle.dialogue-f5475f02589e270066bad59ff3e38760.tres"]
+
+[params]
+
+defaults=true

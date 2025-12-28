@@ -6,15 +6,25 @@ const CLIMB_SPEED := 200.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
+@onready var actionable_finder: Area2D = $"actionable finder"
 
 var health := 1
 var on_ladder := false
 var climbing := false
+const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
 
 func _physics_process(delta: float) -> void:
+	
+	
 	if health <= 0:
 		return
 
+
+	if Input.is_action_just_pressed("ui_accept"):
+		var acctionables = actionable_finder.get_overlapping_areas()
+		if acctionables.size() > 0:
+			DialogueManager.show_example_dialogue_balloon(MAN_WITH_THE_RIFFLE, "start")
+			return
 	var direction := Input.get_axis("left", "right")
 	var vertical_dir := Input.get_axis("up", "down")
 	var grounded := is_on_floor()
@@ -43,7 +53,6 @@ func _physics_process(delta: float) -> void:
 	# JUMP
 	# =========================
 	if Input.is_action_just_pressed("up") and grounded and not climbing:
-		print ("jumping")
 		velocity.y = JUMP_VELOCITY
 
 	# =========================

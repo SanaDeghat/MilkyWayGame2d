@@ -1,11 +1,14 @@
-[gd_scene load_steps=19 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=25 format=4 uid="uid://cgvpe6tifilw0"]
 
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="5_dywbp"]
 [ext_resource type="Script" uid="uid://dk7s6hrk7xul7" path="res://scenes/levels/exit.gd" id="6_1seuy"]
+[ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="7_plydf"]
+[ext_resource type="Resource" uid="uid://c2so27i1be0qg" path="res://assets/dialouges/man with the riffle.dialogue" id="8_5ntmo"]
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="8_8a7m2"]
+[ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1seuy"]
 atlas = ExtResource("5_dywbp")
@@ -88,6 +91,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r1tl"]
 size = Vector2(62.727264, 89.09091)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
+radius = 52.727295
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbmf2"]
+atlas = ExtResource("9_plydf")
+region = Rect2(1664, 1920, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arkx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbmf2")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1)
 
@@ -102,17 +123,13 @@ scale = Vector2(0.375, 0.375)
 tile_map_data = PackedByteArray("AAAFAA0AAQALAA8AAAAFAAwAAQALAA8AAAAFAAsAAQALAA8AAAA=")
 tile_set = ExtResource("8_8a7m2")
 
-[node name="player" parent="." instance=ExtResource("2_4tcl0")]
-position = Vector2(112.000015, 339)
-scale = Vector2(0.75, 0.75)
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="enemySoldier" parent="Enemies" instance=ExtResource("3_dd0lh")]
-position = Vector2(762.7273, 583.63635)
+position = Vector2(1097.2727, 576.36365)
 
 [node name="enemySoldier2" parent="Enemies" instance=ExtResource("3_dd0lh")]
-position = Vector2(800.90906, 473.63635)
+position = Vector2(1102.7272, 460)
 
 [node name="apples" type="Node2D" parent="."]
 
@@ -139,5 +156,26 @@ metadata/_edit_group_ = true
 position = Vector2(2.7271957, 1.8181839)
 shape = SubResource("RectangleShape2D_2r1tl")
 metadata/_edit_group_ = true
+
+[node name="billy" type="StaticBody2D" parent="."]
+
+[node name="Actionables" parent="billy" instance=ExtResource("7_plydf")]
+collision_layer = 16
+collision_mask = 0
+dialogue_resource = ExtResource("8_5ntmo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="billy/Actionables"]
+position = Vector2(419.09088, 629.09094)
+shape = SubResource("CircleShape2D_nfihu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="billy"]
+position = Vector2(420, 629.99994)
+scale = Vector2(0.48579478, 0.641335)
+sprite_frames = SubResource("SpriteFrames_arkx4")
+animation = &"new_animation"
+
+[node name="player" parent="." instance=ExtResource("2_4tcl0")]
+position = Vector2(386.3636, 620.9091)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="body_entered" from="exit" to="exit" method="_on_body_entered"]
