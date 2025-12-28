@@ -89,7 +89,7 @@ size = Vector2(19, 30)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_u0dhw")
 autoplay = "default"
-frame_progress = 0.2778692
+frame_progress = 0.5664293
 
 [node name="Area2D" type="Area2D" parent="."]
 
