@@ -1,6 +1,5 @@
 extends Node2D
 
-var level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	level_setup ()
@@ -15,14 +14,8 @@ func level_setup () -> void:
 		for enemy in enemies.get_children():
 			enemy.player_damaged.connect(_on_player_damaged)
 			
-	var exit = $LevelRoot.get_node_or_null("exit")
-	if exit:
-		exit.body_entered.connect(_on_exit_body_entered)
+	#var player = $LevelRoot.get_node_or_null("player")
+	#if player:
+	#	player.exit_location.connect(_on_exit_clicked)
 func _on_player_damaged(body):
 	body.damage()    
-
-func _on_exit_body_entered(body: Node2D) -> void :
-		if body.name == "player":
-			level+=1
-			print(body.name)
-	

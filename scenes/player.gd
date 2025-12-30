@@ -7,11 +7,14 @@ const CLIMB_SPEED := 200.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
 @onready var actionable_finder: Area2D = $"actionable finder"
+@onready var exit_finder: Area2D = $exit_finder
 
 var health := 1
 var on_ladder := false
 var climbing := false
 const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
+
+signal leave_location 
 
 func _physics_process(delta: float) -> void:
 	
@@ -22,8 +25,12 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept"):
 		var acctionables = actionable_finder.get_overlapping_areas()
+		var exit = exit_finder.get_overlapping_areas()
 		if acctionables.size() > 0:
 			DialogueManager.show_example_dialogue_balloon(MAN_WITH_THE_RIFFLE, "start")
+			return
+		elif exit.size() > 0:
+			emit_signal("leave_location" )
 			return
 	var direction := Input.get_axis("left", "right")
 	var vertical_dir := Input.get_axis("up", "down")

@@ -1,14 +1,34 @@
-[gd_scene load_steps=25 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=27 format=4 uid="uid://cgvpe6tifilw0"]
 
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="5_dywbp"]
-[ext_resource type="Script" uid="uid://dk7s6hrk7xul7" path="res://scenes/levels/exit.gd" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="7_plydf"]
 [ext_resource type="Resource" uid="uid://c2so27i1be0qg" path="res://assets/dialouges/man with the riffle.dialogue" id="8_5ntmo"]
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="8_8a7m2"]
+[ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="8_plydf"]
+[ext_resource type="PackedScene" uid="uid://bfy5udc843vef" path="res://scenes/levels/level_2.tscn" id="9_5ntmo"]
 [ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
+[ext_resource type="PackedScene" uid="uid://b0gsudp5sth25" path="res://scenes/levels/void.tscn" id="11_nkeig"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
+radius = 52.727295
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbmf2"]
+atlas = ExtResource("9_plydf")
+region = Rect2(1664, 1920, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arkx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbmf2")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1seuy"]
 atlas = ExtResource("5_dywbp")
@@ -88,26 +108,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r1tl"]
-size = Vector2(62.727264, 89.09091)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
-radius = 52.727295
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sbmf2"]
-atlas = ExtResource("9_plydf")
-region = Rect2(1664, 1920, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_arkx4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sbmf2")
-}],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ntmo"]
+size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1)
@@ -115,7 +117,7 @@ scale = Vector2(1.1, 1.1)
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
 scale = Vector2(0.375, 0.375)
-tile_map_data = PackedByteArray("AAAFABcAAQAEAAwAAAAGABcAAQAEAAwAAAAHABcAAQAEAAwAAAAIABcAAQAEAAwAAAAAAAEAAQAEABAAAAAAAAIAAQAEABAAAAAAAAMAAQAEABAAAAAAAAQAAQAEABAAAAAAAAUAAQAEABAAAAAAAAYAAQAEABAAAAAAAAcAAQAEABAAAAAAAAgAAQAEABAAAAAAAAkAAQAEABAAAAAAAAoAAQAEABAAAAAAAAsAAQAEABAAAAAAAAwAAQAEABAAAAAAAA0AAQAEABAAAAAFAAkAAQAEAAsAAAAIAAkAAQAEAAsAAAAHAAkAAQAEAAsAAAAKAAoAAQAEAAsAAAAMAAsAAQAEAAsAAAAAAA4AAQAIAAMAAAABAA4AAQAIAAQAAAACAA4AAQAIAAQAAAADAA4AAQAIAAQAAAAEAA4AAQAIAAQAAAAFAA4AAQAIAAQAAAAGAA4AAQAIAAQAAAAHAA4AAQAIAAQAAAAIAA4AAQAIAAQAAAAJAA4AAQAIAAQAAAAKAA4AAQAIAAQAAAALAA4AAQAIAAQAAAAMAA4AAQAIAAQAAAANAA4AAQAIAAQAAAAOAA4AAQAIAAQAAAAPAA4AAQAIAAQAAAAQAA4AAQAIAAQAAAARAA4AAQAIAAQAAAASAA4AAQAIAAQAAAATAA4AAQAIAAQAAAAUAA4AAQAIAAQAAAAVAA4AAQAIAAQAAAAWAA4AAQAIAAQAAAAXAA4AAQAIAAQAAAAYAA4AAQAIAAQAAAAZAA4AAQAIAAQAAAAaAA4AAQAIAAQAAAAbAA4AAQAIAAIAAAAbAA0AAQAGAA8AAAAbAAwAAQAGAA8AAAAbAAsAAQAGAA8AAAAbAAoAAQAGAA8AAAAbAAkAAQAGAA8AAAAbAAgAAQAGAA8AAAAbAAcAAQAGAA8AAAAbAAYAAQAGAA8AAAAbAAUAAQAGAA8AAAAbAAQAAQAGAA8AAAAbAAMAAQAGAA8AAAAbAAIAAQAGAA8AAAAbAAEAAQAGAA8AAAAaAAEAAQAGAA8AAAAaAAAAAQAGAA8AAAAbAAAAAQAGAA8AAAABAAgAAQAEAAkAAAACAAgAAQAEAAkAAAADAAgAAQAEAAkAAAADAAkAAQAGAA8AAAADAAoAAQAGAA8AAAADAAsAAQAGAA8AAAADAAwAAQAGAA8AAAADAA0AAQAGAA8AAAA=")
+tile_map_data = PackedByteArray("AAAFABcAAQAEAAwAAAAGABcAAQAEAAwAAAAHABcAAQAEAAwAAAAIABcAAQAEAAwAAAAAAAEAAQAEABAAAAAAAAIAAQAEABAAAAAAAAMAAQAEABAAAAAAAAQAAQAEABAAAAAAAAUAAQAEABAAAAAAAAYAAQAEABAAAAAAAAcAAQAEABAAAAAAAAgAAQAEABAAAAAAAAkAAQAEABAAAAAAAAoAAQAEABAAAAAAAAsAAQAEABAAAAAAAAwAAQAEABAAAAAAAA0AAQAEABAAAAAFAAkAAQAEAAsAAAAIAAkAAQAEAAsAAAAHAAkAAQAEAAsAAAAKAAoAAQAEAAsAAAAMAAsAAQAEAAsAAAAAAA4AAQAIAAMAAAABAA4AAQAIAAQAAAACAA4AAQAIAAQAAAADAA4AAQAIAAQAAAAEAA4AAQAIAAQAAAAFAA4AAQAIAAQAAAAGAA4AAQAIAAQAAAAHAA4AAQAIAAQAAAAIAA4AAQAIAAQAAAAJAA4AAQAIAAQAAAAKAA4AAQAIAAQAAAALAA4AAQAIAAQAAAAMAA4AAQAIAAQAAAANAA4AAQAIAAQAAAAOAA4AAQAIAAQAAAAPAA4AAQAIAAQAAAAQAA4AAQAIAAQAAAARAA4AAQAIAAQAAAASAA4AAQAIAAQAAAATAA4AAQAIAAQAAAAUAA4AAQAIAAQAAAAVAA4AAQAIAAQAAAAWAA4AAQAIAAQAAAAXAA4AAQAIAAQAAAAYAA4AAQAIAAQAAAAZAA4AAQAIAAQAAAAaAA4AAQAIAAQAAAAbAA4AAQAIAAIAAAAbAA0AAQAGAA8AAAAbAAwAAQAGAA8AAAAbAAsAAQAGAA8AAAAbAAoAAQAGAA8AAAAbAAkAAQAGAA8AAAAbAAgAAQAGAA8AAAAbAAcAAQAGAA8AAAAbAAYAAQAGAA8AAAAbAAUAAQAGAA8AAAAbAAQAAQAGAA8AAAAbAAMAAQAGAA8AAAAbAAIAAQAGAA8AAAAbAAEAAQAGAA8AAAAaAAEAAQAGAA8AAAAaAAAAAQAGAA8AAAAbAAAAAQAGAA8AAAABAAgAAQAEAAkAAAACAAgAAQAEAAkAAAADAAgAAQAEAAkAAAADAAkAAQAGAA8AAAADAAoAAQAGAA8AAAADAAsAAQAGAA8AAAADAAwAAQAGAA8AAAADAA0AAQAGAA8AAAAOAA0AAQAEAA4AAAA=")
 tile_set = ExtResource("8_8a7m2")
 
 [node name="Ladders" type="TileMapLayer" parent="."]
@@ -139,24 +141,6 @@ position = Vector2(520, 615)
 [node name="apple2" parent="apples" instance=ExtResource("4_bfxgj")]
 position = Vector2(256.36362, 404.54544)
 
-[node name="Leave" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1042.7273, 214.54547)
-scale = Vector2(1.698864, 1.5852271)
-sprite_frames = SubResource("SpriteFrames_sbmf2")
-autoplay = "default"
-frame_progress = 0.13606663
-
-[node name="exit" type="Area2D" parent="."]
-position = Vector2(1050.909, 212.72726)
-script = ExtResource("6_1seuy")
-metadata/_edit_group_ = true
-
-[node name="Exit_box" type="CollisionShape2D" parent="exit"]
-position = Vector2(2.7271957, 1.8181839)
-shape = SubResource("RectangleShape2D_2r1tl")
-metadata/_edit_group_ = true
-
 [node name="billy" type="StaticBody2D" parent="."]
 
 [node name="Actionables" parent="billy" instance=ExtResource("7_plydf")]
@@ -178,4 +162,37 @@ animation = &"new_animation"
 position = Vector2(386.3636, 620.9091)
 scale = Vector2(0.75, 0.75)
 
-[connection signal="body_entered" from="exit" to="exit" method="_on_body_entered"]
+[node name="exits" type="Node2D" parent="."]
+
+[node name="exit_To_void" parent="exits" instance=ExtResource("8_plydf")]
+Next_Room = ExtResource("11_nkeig")
+
+[node name="Leave" type="AnimatedSprite2D" parent="exits/exit_To_void"]
+texture_filter = 1
+position = Vector2(362.00363, 386.57074)
+scale = Vector2(1.8123866, 1.5973814)
+sprite_frames = SubResource("SpriteFrames_sbmf2")
+autoplay = "default"
+frame_progress = 0.13606663
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exits/exit_To_void"]
+position = Vector2(366.47726, 397.5)
+shape = SubResource("RectangleShape2D_5ntmo")
+
+[node name="exit_to_level_2" parent="exits" instance=ExtResource("8_plydf")]
+Next_Room = ExtResource("9_5ntmo")
+
+[node name="Leave" type="AnimatedSprite2D" parent="exits/exit_to_level_2"]
+texture_filter = 1
+position = Vector2(783.63635, 619.99994)
+scale = Vector2(1.698864, 1.5852271)
+sprite_frames = SubResource("SpriteFrames_sbmf2")
+autoplay = "default"
+frame_progress = 0.13606663
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exits/exit_to_level_2"]
+position = Vector2(790, 628.1818)
+shape = SubResource("RectangleShape2D_5ntmo")
+
+[connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
+[connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

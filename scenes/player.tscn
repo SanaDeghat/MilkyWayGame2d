@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://b8v7vcmu0gnhr"]
+[gd_scene load_steps=78 format=3 uid="uid://b8v7vcmu0gnhr"]
 
 [ext_resource type="Texture2D" uid="uid://b1pahea5jvrai" path="res://assets/Images/Player/Player Hurt 48x48.png" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bkr3668nsdxdb" path="res://scenes/player.gd" id="1_tuyoq"]
@@ -506,6 +506,9 @@ size = Vector2(55, 88)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
 size = Vector2(106, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v2ag"]
+size = Vector2(105, 68)
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_tuyoq")
 
@@ -548,6 +551,14 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="actionable finder"]
 position = Vector2(-1, 19)
 shape = SubResource("RectangleShape2D_d2wvv")
+
+[node name="exit_finder" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit_finder"]
+position = Vector2(-0.5, 18)
+shape = SubResource("RectangleShape2D_3v2ag")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
