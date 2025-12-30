@@ -14,7 +14,7 @@ var on_ladder := false
 var climbing := false
 const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
 
-signal leave_location 
+signal leave_location
 
 func _physics_process(delta: float) -> void:
 	
@@ -134,3 +134,7 @@ func _on_animated_sprite_2d_animation_looped() -> void:
 		var anim := animated_sprite_2d.animation
 		animated_sprite_2d.frame = frames.get_frame_count(anim) - 1
 		animated_sprite_2d.pause()
+
+
+func _on_enemy_soldier_player_damaged() -> void:
+	pass # Replace with function body.

@@ -70,6 +70,10 @@ down={
 
 locale/translations_pot_files=PackedStringArray("res://assets/dialouges/man with the riffle.dialogue")
 
+[layer_names]
+
+2d_physics/layer_8="player_damage"
+
 [physics]
 
 2d/default_gravity=2931.5829999999996

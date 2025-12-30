@@ -39,14 +39,13 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h=false
 func _process(delta: float) -> void:
 	position.x += direction * SPEED* delta
+	var player = $Collision.get_overlapping_areas()
+	if player.size() > 0:
+		emit_signal("player_damaged",1 )
+		return
 
 func _on_timer_timeout() -> void:
 	animated_sprite_2d.animation = "idle"
 
 	direction *= -1
 	
-
-
-func _on_hitbox_body_exited(body: Node2D) -> void:
-	if body.name=="player":
-		emit_signal("player_damaged", body)
