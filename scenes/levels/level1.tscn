@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=28 format=4 uid="uid://cgvpe6tifilw0"]
 
+[ext_resource type="Script" uid="uid://c5lp7xs7grjpd" path="res://scenes/levels/level_1.gd" id="1_nfihu"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
@@ -112,7 +113,8 @@ animations = [{
 size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.1, 1.1012728)
+script = ExtResource("1_nfihu")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -125,12 +127,12 @@ scale = Vector2(0.375, 0.375)
 tile_map_data = PackedByteArray("AAAFAA0AAQALAA8AAAAFAAwAAQALAA8AAAAFAAsAAQALAA8AAAA=")
 tile_set = ExtResource("8_8a7m2")
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="enemies" type="Node2D" parent="."]
 
-[node name="enemySoldier" parent="Enemies" instance=ExtResource("3_dd0lh")]
+[node name="enemySoldier" parent="enemies" instance=ExtResource("3_dd0lh")]
 position = Vector2(1097.2727, 576.36365)
 
-[node name="enemySoldier2" parent="Enemies" instance=ExtResource("3_dd0lh")]
+[node name="enemySoldier2" parent="enemies" instance=ExtResource("3_dd0lh")]
 position = Vector2(1102.7272, 460)
 
 [node name="apples" type="Node2D" parent="."]

@@ -1,51 +1,37 @@
 extends CharacterBody2D
 
+const SPEED := 80.0
+var i = 0
 
-const SPEED = 80.0
-const JUMP_VELOCITY = -850.0
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-var direction = 1 
-signal player_damaged 
+@onready var hitbox: Area2D = $hitbox
 
+signal player_damaged(damage: int)
+
+var direction := 1
+var can_damage := true
+func _ready():
+	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
-	
-	#adding animation 
-	#if not is_on_floor():
-	#	animated_sprite_2d.animation = "jumping"
-	if velocity.x>1 or  velocity.x < -1 :
-		animated_sprite_2d.animation = "walking"
-	else:
-		animated_sprite_2d.animation = "idle"
-
-	# Add the gravity.
-	if not is_on_floor():
-		#animated_sprite_2d.animation = "jumping"
-		velocity += get_gravity() * delta
-		
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	if direction:
-		velocity.x = direction * SPEED * delta
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	velocity.x = direction * SPEED
+	velocity += get_gravity() * delta
 	move_and_slide()
-	
-	if direction == -1.0:
-		animated_sprite_2d.flip_h=true
-	else :
-		animated_sprite_2d.flip_h=false
-func _process(delta: float) -> void:
-	position.x += direction * SPEED* delta
-	var player = $Collision.get_overlapping_areas()
-	if player.size() > 0:
-		emit_signal("player_damaged",1 )
+
+	animated_sprite_2d.animation = "walking" if abs(velocity.x) > 1 else "idle"
+	animated_sprite_2d.flip_h = direction < 0
+
+func _process(_delta: float) -> void:
+	if not can_damage:
 		return
 
-func _on_timer_timeout() -> void:
-	animated_sprite_2d.animation = "idle"
+	if hitbox.get_overlapping_areas().size() > 0:
+		i+=1
+		player_damaged.emit(1)
+		print(i)
 
+func _on_damage_cooldown_timeout() -> void:
+	can_damage = true
+
+func _on_timer_timeout() -> void:
 	direction *= -1
-	

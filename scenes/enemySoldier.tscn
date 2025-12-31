@@ -253,11 +253,11 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt6ud"]
-size = Vector2(53.94737, 88.1579)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrikb"]
+size = Vector2(11.902869, 13.318262)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncc1l"]
-size = Vector2(62, 95)
+size = Vector2(60.526318, 94.73685)
 
 [node name="enemySoldier" type="CharacterBody2D"]
 texture_filter = 1
@@ -271,20 +271,23 @@ sprite_frames = SubResource("SpriteFrames_0snxj")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.605263, 3.2894723)
-shape = SubResource("RectangleShape2D_dt6ud")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
-[node name="Collision" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 128
 
-[node name="hitbox" type="CollisionShape2D" parent="Collision"]
-position = Vector2(-5.263153, 1.3157895)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-5.9210534, 1.315787)
+scale = Vector2(5.195563, 7.1133037)
+shape = SubResource("RectangleShape2D_xrikb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5789466, 1.3157881)
 shape = SubResource("RectangleShape2D_ncc1l")
 
+[node name="DamageCooldown" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_exited" from="Collision" to="." method="_on_hitbox_body_exited"]
