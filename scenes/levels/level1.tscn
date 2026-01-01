@@ -1,6 +1,5 @@
 [gd_scene load_steps=28 format=4 uid="uid://cgvpe6tifilw0"]
 
-[ext_resource type="Script" uid="uid://c5lp7xs7grjpd" path="res://scenes/levels/level_1.gd" id="1_nfihu"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfy5udc843vef" path="res://scenes/levels/level_2.tscn" id="9_5ntmo"]
 [ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
 [ext_resource type="PackedScene" uid="uid://b0gsudp5sth25" path="res://scenes/levels/void.tscn" id="11_nkeig"]
+[ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="12_nfihu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
 radius = 52.727295
@@ -114,7 +114,6 @@ size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1012728)
-script = ExtResource("1_nfihu")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -195,6 +194,8 @@ frame_progress = 0.13606663
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exits/exit_to_level_2"]
 position = Vector2(790, 628.1818)
 shape = SubResource("RectangleShape2D_5ntmo")
+
+[node name="pause_menu" parent="." instance=ExtResource("12_nfihu")]
 
 [connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
 [connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

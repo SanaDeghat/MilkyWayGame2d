@@ -330,7 +330,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2a3c5")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 7.0
 }, {
@@ -519,7 +519,7 @@ script = ExtResource("1_tuyoq")
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_holxr")
-animation = &"landing"
+animation = &"death"
 autoplay = "idle"
 
 [node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]

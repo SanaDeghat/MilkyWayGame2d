@@ -22,13 +22,11 @@ func _physics_process(delta: float) -> void:
 	animated_sprite_2d.flip_h = direction < 0
 
 func _process(_delta: float) -> void:
-	if not can_damage:
-		return
-
-	if hitbox.get_overlapping_areas().size() > 0:
-		i+=1
-		player_damaged.emit(1)
-		print(i)
+	if can_damage and hitbox.get_overlapping_areas().size() > 0:
+		player_damaged.emit(1)       # optional, mostly for debugging
+		Game.player.damage(1)        # apply damage through global Game singleton
+		can_damage = false
+		$DamageCooldownTimer.start() # cooldown timer node to prevent spam
 
 func _on_damage_cooldown_timeout() -> void:
 	can_damage = true

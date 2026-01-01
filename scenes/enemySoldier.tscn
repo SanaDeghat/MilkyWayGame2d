@@ -288,6 +288,6 @@ shape = SubResource("RectangleShape2D_xrikb")
 position = Vector2(-6.5789466, 1.3157881)
 shape = SubResource("RectangleShape2D_ncc1l")
 
-[node name="DamageCooldown" type="Timer" parent="."]
+[node name="DamageCooldownTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

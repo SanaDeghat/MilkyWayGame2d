@@ -1,6 +1,15 @@
-[gd_scene format=3 uid="uid://cei7xp4t2y0wl"]
+[gd_scene load_steps=3 format=3 uid="uid://cei7xp4t2y0wl"]
 
-[node name="pause_menu" type="Control"]
+[ext_resource type="Script" uid="uid://30x1vxvxsu8u" path="res://pause_menu.gd" id="1_hdmo1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdmo1"]
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+script = ExtResource("1_hdmo1")
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,18 +17,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdmo1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="resume" type="Button" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+text = "Resume"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "resume"
-
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
 text = "quit"
+
+[connection signal="pressed" from="Control/Panel/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/quit" to="." method="_on_quit_pressed"]

@@ -97,4 +97,8 @@ func damage(amount: int) -> void:
 func death() -> void:
 	death_soundeffect.play()
 	animated_sprite_2d.play("death")
-	health = -1
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "death":
+		animated_sprite_2d.stop()
+		animated_sprite_2d.frame = animated_sprite_2d.sprite_frames.get_frame_count("death") - 1

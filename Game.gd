@@ -1,4 +1,8 @@
 extends Node
 
-# Global reference to the current player instance
 var player: Node = null
+var paused := false
+
+func toggle_pause():
+	paused = !paused
+	get_tree().paused = paused
