@@ -517,9 +517,10 @@ script = ExtResource("1_tuyoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-25, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_holxr")
-animation = &"death"
+animation = &"walking"
 autoplay = "idle"
 
 [node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]
@@ -533,17 +534,18 @@ drag_top_margin = 1.0
 drag_right_margin = 1.0
 drag_bottom_margin = 0.81
 
-[node name="ladder" type="Area2D" parent="."]
-collision_layer = 0
+[node name="ladder_finder" type="Area2D" parent="."]
+collision_layer = 2
 collision_mask = 2
+priority = 4
 
-[node name="Ladder?" type="CollisionShape2D" parent="ladder"]
-visible = false
-position = Vector2(-6, 5)
+[node name="Ladder?" type="CollisionShape2D" parent="ladder_finder"]
+position = Vector2(-24, 4)
 shape = SubResource("RectangleShape2D_y4r1p")
 
 [node name="collision 2 d" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 5)
+visible = false
+position = Vector2(-27, 3)
 shape = SubResource("RectangleShape2D_y4r1p")
 
 [node name="actionable finder" type="Area2D" parent="."]
@@ -565,14 +567,15 @@ position = Vector2(-0.5, 18)
 shape = SubResource("RectangleShape2D_3v2ag")
 
 [node name="HitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 128
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-4.5, 4.5)
+position = Vector2(-23, 5)
 shape = SubResource("RectangleShape2D_jej6c")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
-[connection signal="body_entered" from="ladder" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="ladder" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="ladder_finder" to="." method="_on_ladder_finder_body_entered"]
+[connection signal="body_exited" from="ladder_finder" to="." method="_on_ladder_finder_body_exited"]

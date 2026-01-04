@@ -8,6 +8,7 @@ const CLIMB_SPEED := 200.0
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
 @onready var actionable_finder: Area2D = $"actionable finder"
 @onready var exit_finder: Area2D = $exit_finder
+@onready var ladder_finder: Area2D = $ladder_finder
 
 var health := 1
 var on_ladder := false
@@ -33,7 +34,6 @@ func _physics_process(delta: float) -> void:
 		elif exit_finder.get_overlapping_areas().size() > 0:
 			leave_location.emit()
 			return
-
 	var direction := Input.get_axis("left", "right")
 	var vertical_dir := Input.get_axis("up", "down")
 	var grounded := is_on_floor()
@@ -44,15 +44,17 @@ func _physics_process(delta: float) -> void:
 			velocity.y = vertical_dir * CLIMB_SPEED
 			climbing = true
 		else:
-			velocity.y = 0
 			if grounded:
 				climbing = false
+				
+			
 	else:
 		climbing = false
 
 	# Gravity
 	if not grounded and not climbing:
 		velocity += get_gravity() * delta
+		
 
 	# Jump
 	if Input.is_action_just_pressed("up") and grounded and not climbing:
@@ -71,8 +73,12 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = direction < 0
 
 	# Animations
-	if climbing:
-		animated_sprite_2d.play("climbing" if vertical_dir != 0 else "idle")
+	if climbing: 
+		if vertical_dir != 0: animated_sprite_2d.play("climbing") 
+		else: 
+			animated_sprite_2d.pause()
+			velocity.y = 0
+
 	elif not grounded:
 		animated_sprite_2d.play("jumping")
 	elif abs(velocity.x) > 1:
@@ -102,3 +108,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "death":
 		animated_sprite_2d.stop()
 		animated_sprite_2d.frame = animated_sprite_2d.sprite_frames.get_frame_count("death") - 1
+
+
+func _on_ladder_finder_body_entered(body: Node2D) -> void:
+	on_ladder=true
+
+func _on_ladder_finder_body_exited(body: Node2D) -> void:
+	on_ladder=false
