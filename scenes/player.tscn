@@ -526,14 +526,6 @@ autoplay = "idle"
 [node name="Death_soundeffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_smehm")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(-1.37, -1.37)
-drag_vertical_enabled = true
-drag_vertical_offset = -1.0
-drag_top_margin = 1.0
-drag_right_margin = 1.0
-drag_bottom_margin = 0.81
-
 [node name="ladder_finder" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2

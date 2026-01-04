@@ -1,7 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://cgvpe6tifilw0"]
 
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
-[ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="7_plydf"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
 [ext_resource type="PackedScene" uid="uid://b0gsudp5sth25" path="res://scenes/levels/void.tscn" id="11_nkeig"]
 [ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="12_nfihu"]
+[ext_resource type="PackedScene" uid="uid://xorbx2t0hywm" path="res://scenes/camera_2d.tscn" id="13_lgguw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
 radius = 52.727295
@@ -128,12 +128,6 @@ tile_set = ExtResource("8_8a7m2")
 
 [node name="enemies" type="Node2D" parent="."]
 
-[node name="enemySoldier" parent="enemies" instance=ExtResource("3_dd0lh")]
-position = Vector2(1097.2727, 576.36365)
-
-[node name="enemySoldier2" parent="enemies" instance=ExtResource("3_dd0lh")]
-position = Vector2(1102.7272, 460)
-
 [node name="apples" type="Node2D" parent="."]
 
 [node name="apple1" parent="apples" instance=ExtResource("4_bfxgj")]
@@ -196,6 +190,8 @@ shape = SubResource("RectangleShape2D_5ntmo")
 [node name="player" parent="." instance=ExtResource("2_4tcl0")]
 position = Vector2(386.3636, 620.9091)
 scale = Vector2(0.75, 0.75)
+
+[node name="Camera2D" parent="." instance=ExtResource("13_lgguw")]
 
 [connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
 [connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

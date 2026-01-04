@@ -13,7 +13,7 @@ const CLIMB_SPEED := 200.0
 var health := 1
 var on_ladder := false
 var climbing := false
-
+var is_dead := false
 const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
 
 signal leave_location
