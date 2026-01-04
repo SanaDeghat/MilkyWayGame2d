@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=4 uid="uid://bfy5udc843vef"]
+[gd_scene load_steps=28 format=4 uid="uid://bfy5udc843vef"]
 
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="1_3p04p"]
+[ext_resource type="Script" uid="uid://delivrj42ut5x" path="res://scenes/levels/level_2.gd" id="1_brxtv"]
 [ext_resource type="PackedScene" uid="uid://d2776t4e7wiwi" path="res://scenes/enemySoldier.tscn" id="2_qsp8v"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="3_nt80m"]
 [ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="4_brxtv"]
@@ -8,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="6_r88tb"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="7_1yj8c"]
 [ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="8_ndlae"]
+[ext_resource type="PackedScene" uid="uid://bldrocq7mulik" path="res://scenes/shelter.tscn" id="9_nt80m"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="9_v8d84"]
+[ext_resource type="PackedScene" uid="uid://xorbx2t0hywm" path="res://scenes/camera_2d.tscn" id="10_qsp8v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
 radius = 52.727295
@@ -111,6 +114,7 @@ size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1)
+script = ExtResource("1_brxtv")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -161,6 +165,7 @@ position = Vector2(93.63635, 306.36365)
 scale = Vector2(0.75, 0.75)
 
 [node name="exit2" parent="." instance=ExtResource("8_ndlae")]
+DestinationScene = ExtResource("9_nt80m")
 
 [node name="Leave" type="AnimatedSprite2D" parent="exit2"]
 texture_filter = 1
@@ -173,5 +178,7 @@ frame_progress = 0.13606663
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit2"]
 position = Vector2(787.0454, 624.0909)
 shape = SubResource("RectangleShape2D_5ntmo")
+
+[node name="Camera2D" parent="." instance=ExtResource("10_qsp8v")]
 
 [connection signal="leave_location" from="player" to="exit2" method="_on_player_leave_location"]

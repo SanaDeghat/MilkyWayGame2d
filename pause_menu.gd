@@ -12,10 +12,13 @@ func _input(event):
 
 func pause():
 	get_tree().paused = true
+	Game.time_active = false 
 	visible = true
 
 func resume():
 	get_tree().paused = false
+	Game.time_active = true 
+
 	visible = false
 
 	

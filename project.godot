@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Game="*res://Game.gd"
+Game="*res://GameManager.gd"
 PauseMenu="res://pause_menu.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 

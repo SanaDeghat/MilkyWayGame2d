@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=29 format=4 uid="uid://cgvpe6tifilw0"]
 
+[ext_resource type="Script" uid="uid://c5lp7xs7grjpd" path="res://scenes/levels/level_1.gd" id="1_nfihu"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="5_dywbp"]
@@ -8,8 +9,8 @@
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="8_8a7m2"]
 [ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="8_plydf"]
 [ext_resource type="PackedScene" uid="uid://bfy5udc843vef" path="res://scenes/levels/level_2.tscn" id="9_5ntmo"]
+[ext_resource type="PackedScene" uid="uid://bldrocq7mulik" path="res://scenes/shelter.tscn" id="9_nfihu"]
 [ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
-[ext_resource type="PackedScene" uid="uid://b0gsudp5sth25" path="res://scenes/levels/void.tscn" id="11_nkeig"]
 [ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="12_nfihu"]
 [ext_resource type="PackedScene" uid="uid://xorbx2t0hywm" path="res://scenes/camera_2d.tscn" id="13_lgguw"]
 
@@ -114,6 +115,7 @@ size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1012728)
+script = ExtResource("1_nfihu")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -156,7 +158,7 @@ animation = &"new_animation"
 [node name="exits" type="Node2D" parent="."]
 
 [node name="exit_To_void" parent="exits" instance=ExtResource("8_plydf")]
-Next_Room = ExtResource("11_nkeig")
+DestinationScene = ExtResource("9_5ntmo")
 
 [node name="Leave" type="AnimatedSprite2D" parent="exits/exit_To_void"]
 texture_filter = 1
@@ -171,7 +173,7 @@ position = Vector2(366.47726, 397.5)
 shape = SubResource("RectangleShape2D_5ntmo")
 
 [node name="exit_to_level_2" parent="exits" instance=ExtResource("8_plydf")]
-Next_Room = ExtResource("9_5ntmo")
+DestinationScene = ExtResource("9_nfihu")
 
 [node name="Leave" type="AnimatedSprite2D" parent="exits/exit_to_level_2"]
 texture_filter = 1

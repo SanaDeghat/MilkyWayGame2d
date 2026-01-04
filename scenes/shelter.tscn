@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=4 uid="uid://bldrocq7mulik"]
+
+[ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="1_osqu4"]
+[ext_resource type="Script" uid="uid://do2o3f5pamohq" path="res://scenes/leave_shelter_trigger.gd" id="3_i3m7q"]
+[ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="4_ejcbl"]
+[ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="5_wfvgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1seuy"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r1tl"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a7m2"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plydf"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ntmo"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkeig"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfihu"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgguw"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jprdt"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps2vj"]
+atlas = ExtResource("4_ejcbl")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwbme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1seuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r1tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a7m2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plydf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ntmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkeig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfihu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgguw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jprdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps2vj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_inrrg"]
+size = Vector2(67.04549, 76.818214)
+
+[node name="Shelter" type="Node2D"]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+use_parent_material = true
+scale = Vector2(0.375, 0.375)
+tile_map_data = PackedByteArray("AAAAAAAAAQAEAA0AAAAAAAEAAQADAA0AAAAAAAIAAQADAA0AAAAEAAAAAQAEAA4AAAAAAAMAAQAFAAEAAAABAAAAAQAEAA4AAAABAAMAAQAEAAUAAAACAAAAAQAEAA4AAAACAAMAAQAEAAUAAAADAAAAAQAEAA4AAAADAAMAAQAEAAUAAAAEAAMAAQAEAAUAAAAGAAAAAQAEAAwAAAAGAAEAAQADAA0AAAAGAAIAAQADAA0AAAAGAAMAAQAFAAAAAAAFAAAAAQAEAA4AAAAFAAMAAQAEAAUAAAA=")
+tile_set = ExtResource("1_osqu4")
+
+[node name="player" parent="." instance=ExtResource("5_wfvgn")]
+position = Vector2(90, 100)
+scale = Vector2(0.75, 0.75)
+
+[node name="Leave_Shelter_Trigger" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource("3_i3m7q")
+
+[node name="Leave" type="AnimatedSprite2D" parent="Leave_Shelter_Trigger"]
+texture_filter = 1
+position = Vector2(253.99998, 87)
+scale = Vector2(1.8123866, 1.5973814)
+sprite_frames = SubResource("SpriteFrames_hwbme")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_Shelter_Trigger"]
+position = Vector2(252, 104)
+shape = SubResource("RectangleShape2D_inrrg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, -2)
+anchor_mode = 0
+zoom = Vector2(3.7, 3.7)
+
+[connection signal="leave_location" from="player" to="Leave_Shelter_Trigger" method="_on_player_leave_location"]
