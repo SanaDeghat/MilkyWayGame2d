@@ -194,6 +194,7 @@ position = Vector2(386.3636, 620.9091)
 scale = Vector2(0.75, 0.75)
 
 [node name="Camera2D" parent="." instance=ExtResource("13_lgguw")]
+randomstregnth = 100.0
 
 [connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
 [connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

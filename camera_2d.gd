@@ -1,21 +1,37 @@
 extends Camera2D
 @onready var screen_size: Vector2 = get_viewport_rect().size
 @onready var player_node = Game.player
+@export var randomstregnth :float = 30.0
+@export var shakeFade :float = 5.0
 
+var rng  = RandomNumberGenerator.new()
+var shake_strength : float = 0.0
 
-
+func apply_Shake() -> void:
+	shake_strength = randomstregnth
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_screen_position()
 	await get_tree().process_frame
 	position_smoothing_enabled=true
 	position_smoothing_speed=7.0
+	
+func Randon_offset() -> Vector2:
+	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_node.is_dead:
 		return
-	set_screen_position()
+	if Input.is_action_just_pressed("shake"):
+		apply_Shake()
+		
+	if shake_strength > 1:
+		shake_strength = lerpf (shake_strength, 0, shakeFade * delta)
+		offset = Randon_offset()
+		print (shake_strength)
+	else:
+		set_screen_position()
+	
 
 func set_screen_position():
 	var player_pos = player_node.global_position
