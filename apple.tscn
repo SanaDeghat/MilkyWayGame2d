@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqw7661bse5qt"]
+[gd_scene load_steps=9 format=3 uid="uid://cqw7661bse5qt"]
 
 [ext_resource type="Texture2D" uid="uid://co6pgnechg33v" path="res://assets/Images/Collectbles/apple.png" id="1_3ed3y"]
 [ext_resource type="Script" uid="uid://bcol6x6ddwua" path="res://Script/apple.gd" id="1_n78qv"]
-[ext_resource type="AudioStream" uid="uid://ceetxi8nnth76" path="res://assets/SoundEffects/player/collect_apple.wav" id="3_whgpf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n78qv"]
 atlas = ExtResource("1_3ed3y")
@@ -56,8 +55,4 @@ frame_progress = 0.816579
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bg8at")
 
-[node name="collected" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_whgpf")
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="finished" from="collected" to="." method="_on_collected_finished"]

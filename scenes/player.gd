@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED := 400.0
 const JUMP_VELOCITY := -850.0
 const CLIMB_SPEED := 200.0
-
+@export var MAX_FOOD := 5
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_soundeffect: AudioStreamPlayer2D = $Death_soundeffect
 @onready var actionable_finder: Area2D = $"actionable finder"
@@ -99,7 +99,8 @@ func damage(amount: int) -> void:
 
 	if health <= 0:
 		death()
-
+func food_collected() -> void:
+	pass
 func death() -> void:
 	death_soundeffect.play()
 	animated_sprite_2d.play("death")
