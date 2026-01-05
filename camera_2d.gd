@@ -13,9 +13,11 @@ func apply_Shake() -> void:
 func _ready() -> void:
 	set_screen_position()
 	await get_tree().process_frame
-	position_smoothing_enabled=true
-	position_smoothing_speed=7.0
-	
+	position_smoothing_enabled = true
+	position_smoothing_speed = 7.0
+
+	Game.phase_changed.connect(_on_phase_changed)
+
 func Randon_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
 
@@ -28,10 +30,13 @@ func _process(delta: float) -> void:
 	if shake_strength > 1:
 		shake_strength = lerpf (shake_strength, 0, shakeFade * delta)
 		offset = Randon_offset()
-		print (shake_strength)
 	else:
 		set_screen_position()
-	
+
+func _on_phase_changed(phase: int) -> void:
+	if phase == 3:
+		apply_Shake()
+
 
 func set_screen_position():
 	var player_pos = player_node.global_position

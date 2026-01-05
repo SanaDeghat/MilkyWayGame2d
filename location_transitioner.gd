@@ -10,7 +10,7 @@ func _on_player_leave_location():
 
 	# Save where we came from
 
-	print( get_parent().scene_file_path)
+	print( DestinationScene.resource_path)
 	Game.previous_position = player[0].global_position
 
 	# Change to the target scene
