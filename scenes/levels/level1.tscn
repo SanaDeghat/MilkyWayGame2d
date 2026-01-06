@@ -158,33 +158,42 @@ animation = &"new_animation"
 [node name="exits" type="Node2D" parent="."]
 
 [node name="exit_To_void" parent="exits" instance=ExtResource("8_plydf")]
+position = Vector2(390, 356.8598)
 DestinationScene = ExtResource("9_5ntmo")
+intractble_indicator_x = 1520
+metadata/_edit_group_ = true
 
 [node name="Leave" type="AnimatedSprite2D" parent="exits/exit_To_void"]
 texture_filter = 1
-position = Vector2(362.00363, 386.57074)
+position = Vector2(-1.8181763, 26.33316)
 scale = Vector2(1.8123866, 1.5973814)
 sprite_frames = SubResource("SpriteFrames_sbmf2")
 autoplay = "default"
 frame_progress = 0.13606663
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exits/exit_To_void"]
-position = Vector2(366.47726, 397.5)
+position = Vector2(0.90910125, 38.137703)
 shape = SubResource("RectangleShape2D_5ntmo")
 
 [node name="exit_to_level_2" parent="exits" instance=ExtResource("8_plydf")]
+position = Vector2(693.63635, 544.82416)
 DestinationScene = ExtResource("9_nfihu")
+intractble_indicator_x = 700
+intractble_indicator_y = 1000
+intractble_indicator_scale = 1
+metadata/_edit_group_ = true
 
 [node name="Leave" type="AnimatedSprite2D" parent="exits/exit_to_level_2"]
 texture_filter = 1
-position = Vector2(783.63635, 619.99994)
+position = Vector2(2.7272758, 30.873337)
 scale = Vector2(1.698864, 1.5852271)
 sprite_frames = SubResource("SpriteFrames_sbmf2")
 autoplay = "default"
 frame_progress = 0.13606663
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exits/exit_to_level_2"]
-position = Vector2(790, 628.1818)
+position = Vector2(5.454561, 41.769783)
 shape = SubResource("RectangleShape2D_5ntmo")
 
 [node name="pause_menu" parent="." instance=ExtResource("12_nfihu")]

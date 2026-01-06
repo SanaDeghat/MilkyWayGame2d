@@ -15,11 +15,15 @@ var on_ladder := false
 var climbing := false
 var is_dead := false
 const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
-
+var rationsList : Array[TextureRect]
+var rations = 0
 signal leave_location
 
 func _ready() -> void:
 	Game.player = self   # 🔑 register globally
+	for child in $CanvasLayer/Control/HBoxContainer.get_children():
+		rationsList.append(child)
+	print (rationsList)
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -100,7 +104,11 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		death()
 func food_collected() -> void:
-	pass
+	rations+=1
+	update_hunger_display()
+func update_hunger_display() -> void:
+	for i in range(rationsList.size()):
+		rationsList[i] .visible= i<rations
 func death() -> void:
 	death_soundeffect.play()
 	animated_sprite_2d.play("death")

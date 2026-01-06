@@ -1,5 +1,4 @@
 extends Area2D
-@onready var collected: AudioStreamPlayer2D = $collected
 signal food_Collected
 
 # Called when the node enters the scene tree for the first time.

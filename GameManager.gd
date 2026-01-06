@@ -7,6 +7,7 @@ var elapsed := 0.0
 var phase := -1
 var time_active := false
 var previous_scene_path: String 
+var respawn_location_path: String 
 var previous_position: Vector2 = Vector2.ZERO
 func _process(delta):
 	if not time_active:
