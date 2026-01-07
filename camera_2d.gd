@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		set_screen_position()
 
 func _on_phase_changed(phase: int) -> void:
-	if phase == 3:
+	if phase == 7:
 		apply_Shake()
 
 

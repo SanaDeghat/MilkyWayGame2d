@@ -14,12 +14,14 @@ func _process(delta):
 		return
 
 	elapsed += delta
-	var new_phase := int((elapsed / CYCLE_LENGTH) * 4)
+	var new_phase := int((elapsed / CYCLE_LENGTH) * 8)
 
 	if new_phase != phase:
 		phase = new_phase
+		#
+		if player and phase < 9 :
+			player.changeClock(8-phase)
 		phase_changed.emit(phase) # emit on change
 
 	if elapsed >= CYCLE_LENGTH:
-		elapsed = 0.0
-		phase = -1
+		player.damage(100)

@@ -18,13 +18,14 @@ const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
 var rationsList : Array[TextureRect]
 var rations = 0
 signal leave_location
-
+func player_check()->void:
+	print("check")
 func _ready() -> void:
-	changeClock(7)
 	Game.player = self   # 🔑 register globally
 	for child in $CanvasLayer/Control/HBoxContainer.get_children():
 		rationsList.append(child)
-	print (rationsList)
+	changeClock(8-Game.phase)
+	print (8-Game.phase)
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -119,7 +120,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		animated_sprite_2d.stop()
 		animated_sprite_2d.frame = animated_sprite_2d.sprite_frames.get_frame_count("death") - 1
 func changeClock(time:int) -> void:
-	$CanvasLayer/AnimatedSprite2D.animation = time
+	$CanvasLayer/AnimatedSprite2D.animation = str(time)
 
 
 func _on_ladder_finder_body_entered(body: Node2D) -> void:
