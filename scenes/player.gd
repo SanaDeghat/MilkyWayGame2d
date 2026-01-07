@@ -20,6 +20,7 @@ var rations = 0
 signal leave_location
 
 func _ready() -> void:
+	changeClock(7)
 	Game.player = self   # 🔑 register globally
 	for child in $CanvasLayer/Control/HBoxContainer.get_children():
 		rationsList.append(child)
@@ -117,6 +118,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "death":
 		animated_sprite_2d.stop()
 		animated_sprite_2d.frame = animated_sprite_2d.sprite_frames.get_frame_count("death") - 1
+func changeClock(time:int) -> void:
+	$CanvasLayer/AnimatedSprite2D.animation = time
 
 
 func _on_ladder_finder_body_entered(body: Node2D) -> void:
