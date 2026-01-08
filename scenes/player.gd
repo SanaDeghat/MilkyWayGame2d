@@ -9,27 +9,34 @@ const CLIMB_SPEED := 200.0
 @onready var actionable_finder: Area2D = $"actionable finder"
 @onready var exit_finder: Area2D = $exit_finder
 @onready var ladder_finder: Area2D = $ladder_finder
-
+@onready var fade_to_black_animation: CanvasLayer = $fadeToBlackAnimation
 var health := 1
 var on_ladder := false
 var climbing := false
 var is_dead := false
 const MAN_WITH_THE_RIFFLE = preload("uid://c2so27i1be0qg")
 var rationsList : Array[TextureRect]
-var rations = 0
 signal leave_location
 func player_check()->void:
 	print("check")
 func _ready() -> void:
+	
 	Game.player = self   # 🔑 register globally
 	for child in $CanvasLayer/Control/HBoxContainer.get_children():
 		rationsList.append(child)
 	changeClock(8-Game.phase)
-	print (8-Game.phase)
-
+	update_hunger_display()
 func _physics_process(delta: float) -> void:
 	if health <= 0:
-		return
+		if Input.is_action_just_pressed("ui_accept"):
+			fade_to_black_animation.play("fadeToBlack")
+			get_tree().change_scene_to_file("res://scenes/shelter.tscn")
+			Game.elapsed=0
+			Game.rations=Game.saved_rations
+			health=1
+
+		else:
+			return
 
 	if Input.is_action_just_pressed("ui_accept"):
 		if actionable_finder.get_overlapping_areas().size() > 0:
@@ -106,14 +113,17 @@ func damage(amount: int) -> void:
 	if health <= 0:
 		death()
 func food_collected() -> void:
-	rations+=1
+	Game.rations+=1
 	update_hunger_display()
 func update_hunger_display() -> void:
 	for i in range(rationsList.size()):
-		rationsList[i] .visible= i<rations
+		rationsList[i] .visible= i<Game.rations
 func death() -> void:
 	death_soundeffect.play()
+	Game.previous_scene_path = Game.respawn_location_path
 	animated_sprite_2d.play("death")
+	
+	
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "death":

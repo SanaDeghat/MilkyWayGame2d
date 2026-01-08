@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://b8v7vcmu0gnhr"]
+[gd_scene load_steps=94 format=3 uid="uid://b8v7vcmu0gnhr"]
 
 [ext_resource type="Texture2D" uid="uid://b1pahea5jvrai" path="res://assets/Images/Player/Player Hurt 48x48.png" id="1_qlg0r"]
 [ext_resource type="Script" uid="uid://bkr3668nsdxdb" path="res://scenes/player.gd" id="1_tuyoq"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://sm430r11rsgc" path="res://assets/SoundEffects/player/hades-death-sound.mp3" id="8_smehm"]
 [ext_resource type="Texture2D" uid="uid://bi73tsps8uf1r" path="res://assets/Images/UI/pixel-art-empty-circle-icon-pixelated-circle-outline-representing-a-blank-or-placeholder-space-isolated-illustration-vector-removebg-preview.png" id="11_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://ce5tjgh3c1o5u" path="res://assets/Images/UI/fractions-educationfraction-pie-divided-into-600w-1726436647.webp" id="12_3v2ag"]
+[ext_resource type="PackedScene" uid="uid://bs4mtd4a5rhdf" path="res://fadeToBlackAnimation.tscn" id="13_jej6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2w11d"]
 atlas = ExtResource("2_y4r1p")
@@ -711,7 +712,6 @@ layout_mode = 0
 offset_right = 4.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 stretch_mode = 4
@@ -723,7 +723,6 @@ sprite_frames = SubResource("SpriteFrames_qsb7e")
 animation = &"filled"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 stretch_mode = 4
@@ -774,6 +773,8 @@ animation = &"filled"
 position = Vector2(65, 671)
 sprite_frames = SubResource("SpriteFrames_irpag")
 animation = &"6"
+
+[node name="fadeToBlackAnimation" parent="." instance=ExtResource("13_jej6c")]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

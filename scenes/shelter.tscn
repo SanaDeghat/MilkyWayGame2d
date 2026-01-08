@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://bldrocq7mulik"]
+[gd_scene load_steps=19 format=4 uid="uid://bldrocq7mulik"]
 
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="1_osqu4"]
+[ext_resource type="Script" uid="uid://bkjwcps3s2y2y" path="res://scenes/shelter.gd" id="1_u3ehf"]
 [ext_resource type="Script" uid="uid://do2o3f5pamohq" path="res://scenes/leave_shelter_trigger.gd" id="3_i3m7q"]
 [ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="4_ejcbl"]
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="5_wfvgn"]
+[ext_resource type="PackedScene" uid="uid://bs4mtd4a5rhdf" path="res://fadeToBlackAnimation.tscn" id="6_u3ehf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1seuy"]
 atlas = ExtResource("4_ejcbl")
@@ -87,6 +89,7 @@ animations = [{
 size = Vector2(67.04549, 76.818214)
 
 [node name="Shelter" type="Node2D"]
+script = ExtResource("1_u3ehf")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -118,5 +121,7 @@ shape = SubResource("RectangleShape2D_inrrg")
 position = Vector2(-4, -2)
 anchor_mode = 0
 zoom = Vector2(3.7, 3.7)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("6_u3ehf")]
 
 [connection signal="leave_location" from="player" to="Leave_Shelter_Trigger" method="_on_player_leave_location"]
