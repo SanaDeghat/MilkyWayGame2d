@@ -12,6 +12,7 @@ var previous_scene_path: String
 var respawn_location_path: String 
 var respawn_position: Vector2 = Vector2.ZERO
 var previous_position: Vector2 = Vector2.ZERO
+var collected_food := {}
 
 func _process(delta):
 	if not time_active:

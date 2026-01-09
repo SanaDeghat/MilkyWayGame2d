@@ -1,24 +1,23 @@
-[gd_scene load_steps=29 format=4 uid="uid://cgvpe6tifilw0"]
+[gd_scene load_steps=28 format=4 uid="uid://ce5ohgkb5v64x"]
 
-[ext_resource type="Script" uid="uid://c5lp7xs7grjpd" path="res://scenes/levels/level_1.gd" id="1_nfihu"]
-[ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="2_4tcl0"]
-[ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="4_bfxgj"]
-[ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="5_dywbp"]
-[ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="7_plydf"]
-[ext_resource type="Resource" uid="uid://c2so27i1be0qg" path="res://assets/dialouges/man with the riffle.dialogue" id="8_5ntmo"]
-[ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="8_8a7m2"]
-[ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="8_plydf"]
-[ext_resource type="PackedScene" uid="uid://bfy5udc843vef" path="res://scenes/levels/level_2.tscn" id="9_5ntmo"]
-[ext_resource type="PackedScene" uid="uid://bldrocq7mulik" path="res://scenes/shelter.tscn" id="9_nfihu"]
-[ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="9_plydf"]
-[ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="12_nfihu"]
-[ext_resource type="PackedScene" uid="uid://xorbx2t0hywm" path="res://scenes/camera_2d.tscn" id="13_lgguw"]
+[ext_resource type="Script" uid="uid://c5lp7xs7grjpd" path="res://scenes/levels/level_1.gd" id="1_i8m3h"]
+[ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="2_ey2yj"]
+[ext_resource type="PackedScene" uid="uid://cqw7661bse5qt" path="res://apple.tscn" id="3_2iuaq"]
+[ext_resource type="PackedScene" uid="uid://cq86gnunwa2hm" path="res://scenes/actionables.tscn" id="4_7lhta"]
+[ext_resource type="Resource" uid="uid://c2so27i1be0qg" path="res://assets/dialouges/man with the riffle.dialogue" id="5_c2hjr"]
+[ext_resource type="Texture2D" uid="uid://cu7pl42l3onhw" path="res://assets/Images/Tilemap/spritesheet-tiles-double.png" id="6_m2g2s"]
+[ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="7_q72f6"]
+[ext_resource type="PackedScene" uid="uid://bfy5udc843vef" path="res://scenes/levels/level_2.tscn" id="8_t7aa4"]
+[ext_resource type="Texture2D" uid="uid://isqdp1i5l0kk" path="res://assets/Images/Tilemap/Checkpoint (Flag Idle)(64x64).png" id="9_kgkl0"]
+[ext_resource type="PackedScene" uid="uid://bldrocq7mulik" path="res://scenes/shelter.tscn" id="10_w2wn7"]
+[ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="11_80b8l"]
+[ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="12_fp3bk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nfihu"]
 radius = 52.727295
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbmf2"]
-atlas = ExtResource("9_plydf")
+atlas = ExtResource("6_m2g2s")
 region = Rect2(1664, 1920, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_arkx4"]
@@ -33,43 +32,43 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1seuy"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2r1tl"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a7m2"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plydf"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ntmo"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nkeig"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfihu"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgguw"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jprdt"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ps2vj"]
-atlas = ExtResource("5_dywbp")
+atlas = ExtResource("9_kgkl0")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sbmf2"]
@@ -115,34 +114,34 @@ size = Vector2(67.04549, 76.818214)
 
 [node name="LevelRoot" type="Node2D"]
 scale = Vector2(1.1, 1.1012728)
-script = ExtResource("1_nfihu")
+script = ExtResource("1_i8m3h")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
 scale = Vector2(0.375, 0.375)
-tile_map_data = PackedByteArray("AAAAAAkAAQAEABAAAAAAAAoAAQAEABAAAAAAAAsAAQAEABAAAAAAAAwAAQAEABAAAAAAAA0AAQAEABAAAAAAAA4AAQAIAAMAAAABAA4AAQAIAAQAAAACAA4AAQAIAAQAAAADAA4AAQAIAAQAAAAEAA4AAQAIAAQAAAAFAA4AAQAIAAQAAAAGAA4AAQAIAAQAAAAHAA4AAQAIAAQAAAAIAA4AAQAIAAQAAAAJAA4AAQAIAAQAAAAKAA4AAQAIAAQAAAALAA4AAQAIAAIAAAAAAAcAAQAEABAAAAAAAAgAAQAEABAAAAALAA0AAQAEAA8AAAALAAwAAQAEAA8AAAALAAsAAQAEAA8AAAALAAoAAQAEAA8AAAALAAkAAQAEAA8AAAALAAgAAQAEAA8AAAALAAcAAQAEAA8AAAALAAYAAQAHABAAAAAAAAYAAQAHAA8AAAABAAYAAQAHABAAAAACAAYAAQAHABAAAAADAAYAAQAHABAAAAAEAAYAAQAHABAAAAAFAAYAAQAHABAAAAAGAAYAAQAHABAAAAAHAAYAAQAHABAAAAAIAAYAAQAHABAAAAAJAAYAAQAHABAAAAAKAAUAAQAHABAAAAAKAAYAAQAHABAAAAA=")
-tile_set = ExtResource("8_8a7m2")
+tile_map_data = PackedByteArray("AAAAAAkAAQAEABAAAAAAAAoAAQAEABAAAAAAAAsAAQAEABAAAAAAAAwAAQAEABAAAAAAAA0AAQAEABAAAAAAAA4AAQAIAAMAAAABAA4AAQAIAAQAAAACAA4AAQAIAAQAAAADAA4AAQAIAAQAAAAEAA4AAQAIAAQAAAAFAA4AAQAIAAQAAAAGAA4AAQAIAAQAAAAHAA4AAQAIAAQAAAAIAA4AAQAIAAQAAAAJAA4AAQAIAAQAAAAKAA4AAQAIAAQAAAALAA4AAQAIAAIAAAAAAAgAAQAHAA8AAAALAA0AAQAEAA8AAAALAAwAAQAEAA8AAAALAAsAAQAEAA8AAAALAAoAAQAEAA8AAAALAAkAAQAEAA8AAAALAAgAAQAHAA4AAAAKAAUAAQAHABAAAAABAAgAAQAHABAAAAACAAgAAQAHABAAAAADAAgAAQAHABAAAAAEAAgAAQAHABAAAAAFAAgAAQAHABAAAAAGAAgAAQAHABAAAAAHAAgAAQAHABAAAAAIAAgAAQAHABAAAAAJAAgAAQAHABAAAAAKAAgAAQAHABAAAAA=")
+tile_set = ExtResource("2_ey2yj")
 
 [node name="Ladders" type="TileMapLayer" parent="."]
 scale = Vector2(0.375, 0.375)
 tile_map_data = PackedByteArray("AAAFAA0AAQALAA8AAAAFAAwAAQALAA8AAAAFAAsAAQALAA8AAAA=")
-tile_set = ExtResource("8_8a7m2")
+tile_set = ExtResource("2_ey2yj")
 
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="apples" type="Node2D" parent="."]
 
-[node name="apple1" parent="apples" instance=ExtResource("4_bfxgj")]
+[node name="apple1" parent="apples" instance=ExtResource("3_2iuaq")]
 position = Vector2(520, 615)
 
-[node name="apple2" parent="apples" instance=ExtResource("4_bfxgj")]
+[node name="apple2" parent="apples" instance=ExtResource("3_2iuaq")]
 position = Vector2(256.36362, 404.54544)
 
 [node name="billy" type="StaticBody2D" parent="."]
 
-[node name="Actionables" parent="billy" instance=ExtResource("7_plydf")]
+[node name="Actionables" parent="billy" instance=ExtResource("4_7lhta")]
 position = Vector2(417.2727, 598.3985)
-dialogue_resource = ExtResource("8_5ntmo")
+dialogue_resource = ExtResource("5_c2hjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="billy/Actionables"]
 position = Vector2(2.7272644, 30.873352)
@@ -156,9 +155,9 @@ animation = &"new_animation"
 
 [node name="exits" type="Node2D" parent="."]
 
-[node name="exit_To_void" parent="exits" instance=ExtResource("8_plydf")]
+[node name="exit_To_void" parent="exits" instance=ExtResource("7_q72f6")]
 position = Vector2(390, 356.8598)
-DestinationScene = ExtResource("9_5ntmo")
+DestinationScene = ExtResource("8_t7aa4")
 intractble_indicator_x = 1520
 metadata/_edit_group_ = true
 
@@ -175,9 +174,9 @@ metadata/_edit_group_ = true
 position = Vector2(0.90910125, 38.137703)
 shape = SubResource("RectangleShape2D_5ntmo")
 
-[node name="exit_to_level_2" parent="exits" instance=ExtResource("8_plydf")]
+[node name="exit_to_level_2" parent="exits" instance=ExtResource("7_q72f6")]
 position = Vector2(693.63635, 544.82416)
-DestinationScene = ExtResource("9_nfihu")
+DestinationScene = ExtResource("10_w2wn7")
 intractble_indicator_x = 700
 intractble_indicator_y = 1000
 intractble_indicator_scale = 1
@@ -185,8 +184,8 @@ metadata/_edit_group_ = true
 
 [node name="Leave" type="AnimatedSprite2D" parent="exits/exit_to_level_2"]
 texture_filter = 1
-position = Vector2(2.7272758, 30.873337)
-scale = Vector2(1.698864, 1.5852271)
+position = Vector2(9.4545555, 30.873337)
+scale = Vector2(1.4886365, 1.5852271)
 sprite_frames = SubResource("SpriteFrames_sbmf2")
 autoplay = "default"
 frame_progress = 0.13606663
@@ -195,15 +194,15 @@ frame_progress = 0.13606663
 position = Vector2(5.454561, 41.769783)
 shape = SubResource("RectangleShape2D_5ntmo")
 
-[node name="pause_menu" parent="." instance=ExtResource("12_nfihu")]
+[node name="pause_menu" parent="." instance=ExtResource("11_80b8l")]
 
-[node name="player" parent="." instance=ExtResource("2_4tcl0")]
-position = Vector2(241.81816, 531.2035)
+[node name="player" parent="." instance=ExtResource("12_fp3bk")]
+position = Vector2(180.90909, 621.0996)
 scale = Vector2(0.75, 0.75)
 
-[node name="Camera2D" parent="." instance=ExtResource("13_lgguw")]
-position = Vector2(239.0909, 29.965328)
-randomstregnth = 100.0
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(285.45456, 551.18036)
+zoom = Vector2(1.95, 1.95)
 
 [connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
 [connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq86gnunwa2hm"]
+[gd_scene load_steps=3 format=3 uid="uid://cq86gnunwa2hm"]
 
 [ext_resource type="Script" uid="uid://d00f224nlt4c6" path="res://actionables.gd" id="1_nbe2n"]
+[ext_resource type="PackedScene" uid="uid://dac2gl0j3qte3" path="res://intractble_indicator.tscn" id="2_ejnww"]
 
 [node name="Actionables" type="Area2D"]
-collision_layer = 0
-collision_mask = 16
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("1_nbe2n")
+
+[node name="Intractble_indicator" parent="." instance=ExtResource("2_ejnww")]
+position = Vector2(0.99999994, -36.999996)
+animation = &"Show"
+frame = 5
+frame_progress = 1.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="animation_finished" from="Intractble_indicator" to="." method="_on_intractble_indicator_animation_finished"]
