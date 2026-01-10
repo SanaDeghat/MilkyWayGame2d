@@ -4,6 +4,7 @@ extends Area2D
 @export var dialogue_start : String = "start"
 
 func _on_area_entered(area: Area2D) -> void:
+	Game.actionable = self
 	print("entered")
 	intractble_indicator.visible = true
 	intractble_indicator.play("Show")

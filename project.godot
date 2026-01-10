@@ -80,7 +80,7 @@ shake={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialouges/man with the riffle.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/dialouges/man with the riffle.dialogue", "res://shelter tutporial .dialogue")
 
 [layer_names]
 
@@ -89,3 +89,8 @@ locale/translations_pot_files=PackedStringArray("res://assets/dialouges/man with
 [physics]
 
 2d/default_gravity=2931.5829999999996
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

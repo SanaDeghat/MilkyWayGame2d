@@ -1,9 +1,10 @@
 extends Node
 var player: Node = null
+var actionable: Node = null
 signal phase_changed(phase)
 var rations := 0
 var saved_rations := 0
-const CYCLE_LENGTH := 20.0
+const CYCLE_LENGTH := 200.0
 const MAX_PHASE=8
 var elapsed := 0.0
 var phase := -1

@@ -30,7 +30,10 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		if Input.is_action_just_pressed("ui_accept"):
 			fade_to_black_animation.play("fadeToBlack")
-			get_tree().change_scene_to_file("res://scenes/shelter.tscn")
+			if Game.respawn_location_path:
+				get_tree().change_scene_to_file("res://scenes/shelter.tscn")
+			else:
+				get_tree().change_scene_to_file("res://scenes/levels/tutorial_level.tscn")
 			Game.elapsed=0
 			Game.rations=Game.saved_rations
 			health=1
@@ -40,9 +43,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept"):
 		if actionable_finder.get_overlapping_areas().size() > 0:
-			DialogueManager.show_example_dialogue_balloon(
-				MAN_WITH_THE_RIFFLE, "start"
-			)
+			Game.actionable.action()
 			return
 		elif exit_finder.get_overlapping_areas().size() > 0:
 			leave_location.emit()
