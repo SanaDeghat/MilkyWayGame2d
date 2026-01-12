@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://d2776t4e7wiwi"]
+[gd_scene load_steps=44 format=3 uid="uid://d2776t4e7wiwi"]
 
 [ext_resource type="Texture2D" uid="uid://cq65neenqhnrt" path="res://assets/Images/enemy/97805a93-7607-498c-9244-0dcfdb625f13.png" id="1_apaeh"]
 [ext_resource type="Script" uid="uid://h5epahn2x3b0" path="res://scenes/enemy_soldier.gd" id="1_jcf0a"]
@@ -259,13 +259,20 @@ size = Vector2(11.902869, 13.318262)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncc1l"]
 size = Vector2(60.526318, 94.73685)
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ncc1l"]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_xrikb"]
+blackboard_plan = SubResource("BlackboardPlan_ncc1l")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_lov6u"]
+
 [node name="enemySoldier" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(0.76, 0.76)
 script = ExtResource("1_jcf0a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.9999962, 0)
+position = Vector2(-5.9604645e-08, -1.3157896)
 scale = Vector2(2.9583335, 3)
 sprite_frames = SubResource("SpriteFrames_0snxj")
 animation = &"idle"
@@ -289,5 +296,13 @@ position = Vector2(-6.5789466, 1.3157881)
 shape = SubResource("RectangleShape2D_ncc1l")
 
 [node name="DamageCooldownTimer" type="Timer" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(5.263158, -27.631578)
+target_position = Vector2(159.211, 0)
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_xrikb")
+blackboard_plan = SubResource("BlackboardPlan_lov6u")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

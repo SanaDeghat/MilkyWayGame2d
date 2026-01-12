@@ -96,6 +96,10 @@ animation = &"new_animation"
 
 [node name="exits" type="Node2D" parent="."]
 
+[node name="player" parent="exits" instance=ExtResource("2_4tcl0")]
+position = Vector2(208.18181, 612.01917)
+scale = Vector2(0.75, 0.75)
+
 [node name="exit_To_void" parent="exits" instance=ExtResource("8_plydf")]
 position = Vector2(1414.5454, 67.19498)
 DestinationScene = ExtResource("9_5ntmo")
@@ -136,12 +140,8 @@ metadata/_edit_group_ = true
 
 [node name="pause_menu" parent="." instance=ExtResource("12_nfihu")]
 
-[node name="Camera2D" parent="." instance=ExtResource("13_lgguw")]
-position = Vector2(239.0909, 29.965328)
-randomstregnth = 100.0
-
 [node name="enemySoldier" parent="." instance=ExtResource("14_jprdt")]
-position = Vector2(938.18176, 627.45575)
+position = Vector2(819.0908, 384.101)
 
 [node name="enemySoldier2" parent="." instance=ExtResource("14_jprdt")]
 position = Vector2(1098.1818, 614.7432)
@@ -149,9 +149,9 @@ position = Vector2(1098.1818, 614.7432)
 [node name="enemySoldier3" parent="." instance=ExtResource("14_jprdt")]
 position = Vector2(1302.7274, 612.92706)
 
-[node name="player" parent="." instance=ExtResource("2_4tcl0")]
-position = Vector2(213.63637, 576.6056)
-scale = Vector2(0.75, 0.75)
+[node name="Camera2D" parent="." instance=ExtResource("13_lgguw")]
+position = Vector2(239.0909, 29.965328)
+randomstregnth = 100.0
 
-[connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
-[connection signal="leave_location" from="player" to="exits/exit_to_level_2" method="_on_player_leave_location"]
+[connection signal="leave_location" from="exits/player" to="exits/exit_To_void" method="_on_player_leave_location"]
+[connection signal="leave_location" from="exits/player" to="exits/exit_to_level_2" method="_on_player_leave_location"]

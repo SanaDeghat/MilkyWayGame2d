@@ -69,10 +69,10 @@ sprite_frames = SubResource("SpriteFrames_qsp8v")
 animation = &"new_animation"
 metadata/_edit_group_ = true
 
-[node name="Camera2D" parent="." instance=ExtResource("10_qsp8v")]
-
 [node name="player" parent="." instance=ExtResource("7_1yj8c")]
 position = Vector2(101.81816, 378.18176)
 scale = Vector2(0.75, 0.75)
+
+[node name="Camera2D" parent="." instance=ExtResource("10_qsp8v")]
 
 [connection signal="leave_location" from="player" to="exit2" method="_on_player_leave_location"]

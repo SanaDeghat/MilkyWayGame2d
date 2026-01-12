@@ -5,21 +5,24 @@ var i = 0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $hitbox
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 signal player_damaged(damage: int)
 
 var direction := 1
 var can_damage := true
 func _ready():
+
 	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
 	velocity.x = direction * SPEED
 	velocity += get_gravity() * delta
 	move_and_slide()
-
 	animated_sprite_2d.animation = "walking" if abs(velocity.x) > 1 else "idle"
 	animated_sprite_2d.flip_h = direction < 0
+	
+	
 
 func _process(_delta: float) -> void:
 	if can_damage and hitbox.get_overlapping_areas().size() > 0:
@@ -32,4 +35,5 @@ func _on_damage_cooldown_timeout() -> void:
 	can_damage = true
 
 func _on_timer_timeout() -> void:
+	ray_cast_2d.target_position*=-1
 	direction *= -1
