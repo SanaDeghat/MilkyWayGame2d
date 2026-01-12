@@ -79,7 +79,7 @@ position = Vector2(2.7272644, 30.873352)
 shape = SubResource("CircleShape2D_nfihu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="billy"]
-position = Vector2(420, 629.99994)
+position = Vector2(421.81815, 630.1799)
 scale = Vector2(0.48579478, 0.641335)
 sprite_frames = SubResource("SpriteFrames_arkx4")
 animation = &"new_animation"
@@ -105,14 +105,16 @@ metadata/_edit_group_ = true
 position = Vector2(0.90910125, 38.137703)
 shape = SubResource("RectangleShape2D_5ntmo")
 
-[node name="pause_menu" parent="." instance=ExtResource("11_80b8l")]
-
 [node name="player" parent="." instance=ExtResource("12_fp3bk")]
-position = Vector2(146.36363, 617.46735)
+visible = false
+position = Vector2(150.90909, 633.8121)
 scale = Vector2(0.75, 0.75)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(286.36365, 552.08844)
 zoom = Vector2(1.95, 1.95)
+
+[node name="pause_menu" parent="." instance=ExtResource("11_80b8l")]
+visible = false
 
 [connection signal="leave_location" from="player" to="exits/exit_To_void" method="_on_player_leave_location"]
