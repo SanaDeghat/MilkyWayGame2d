@@ -1,16 +1,17 @@
 extends CanvasLayer
 var last_input_was_controller: bool = false
-@onready var animated_sprite_2d: AnimatedSprite2D = $Control/Panel/VBoxContainer/TextureRect/AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $Control/Panel/VBoxContainer/TextureRect/AnimatedSprite2D
 
 func _ready():
 	visible=false
+
 func _input(event):
-	if animated_sprite_2d == null:
+	"""	if animated_sprite_2d == null:
 		return
 	if event is InputEventKey:
 		animated_sprite_2d.animation = "Keyboard"
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion :
-		animated_sprite_2d.animation = "Controller"
+		animated_sprite_2d.animation = "Controller"""
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			resume()
@@ -27,7 +28,6 @@ func pause():
 func resume():
 	get_tree().paused = false
 	Game.time_active = true 
-
 	visible = false
 
 	

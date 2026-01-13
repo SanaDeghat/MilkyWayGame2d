@@ -106,7 +106,6 @@ position = Vector2(0.90910125, 38.137703)
 shape = SubResource("RectangleShape2D_5ntmo")
 
 [node name="player" parent="." instance=ExtResource("12_fp3bk")]
-visible = false
 position = Vector2(150.90909, 633.8121)
 scale = Vector2(0.75, 0.75)
 
