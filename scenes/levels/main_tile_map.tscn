@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bswrrnfwvh0m"]
+
+[ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="1_dsbcq"]
+[ext_resource type="Script" uid="uid://dovvx528ex1ow" path="res://scenes/levels/MainTileMap.cs" id="2_mptfo"]
+
+[node name="TileMap" type="TileMapLayer"]
+use_parent_material = true
+scale = Vector2(0.375, 0.375)
+tile_set = ExtResource("1_dsbcq")
+script = ExtResource("2_mptfo")
