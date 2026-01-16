@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bfy5udc843vef"]
+[gd_scene load_steps=14 format=4 uid="uid://bfy5udc843vef"]
 
 [ext_resource type="TileSet" uid="uid://ddvf81kgxovb7" path="res://assets/TileSet.tres" id="1_3p04p"]
 [ext_resource type="Script" uid="uid://delivrj42ut5x" path="res://scenes/levels/level_2.gd" id="1_brxtv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8v7vcmu0gnhr" path="res://scenes/player.tscn" id="7_1yj8c"]
 [ext_resource type="PackedScene" uid="uid://bgt2nmjuxkeld" path="res://Win_Screen.tscn" id="7_3p04p"]
 [ext_resource type="PackedScene" uid="uid://ts4g24ysfkww" path="res://Script/Location_transfer.tscn" id="8_ndlae"]
+[ext_resource type="PackedScene" uid="uid://cei7xp4t2y0wl" path="res://pause_menu.tscn" id="10_nt80m"]
 [ext_resource type="PackedScene" uid="uid://xorbx2t0hywm" path="res://scenes/camera_2d.tscn" id="10_qsp8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ntmo"]
@@ -74,5 +75,7 @@ position = Vector2(101.81816, 378.18176)
 scale = Vector2(0.75, 0.75)
 
 [node name="Camera2D" parent="." instance=ExtResource("10_qsp8v")]
+
+[node name="pause_menu" parent="." instance=ExtResource("10_nt80m")]
 
 [connection signal="leave_location" from="player" to="exit2" method="_on_player_leave_location"]
