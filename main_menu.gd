@@ -9,6 +9,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_start_button_pressed() -> void:
+	print("print")
 	Game.time_active=true
 	get_tree().change_scene_to_file("res://scenes/levels/level_2.tscn")
 
